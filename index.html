@@ -176,7 +176,7 @@ font-size:32px;
 
 <div class="card">
 <i class="fas fa-user-md"></i>
-<h3>Medical</h3>
+<a href="medical.html">Medical</a>
 <p>MBBS, BDS, Nursing, Pharmacy, Biotechnology</p>
 </div>
 
@@ -302,5 +302,41 @@ alert("Thank you! Your message has been sent successfully (Demo Mode).");
 }
 </script>
 
+<!-- Chatbot Button -->
+<button onclick="openChat()" style="position:fixed;bottom:20px;right:20px;padding:10px 15px;border:none;border-radius:50px;background:#007bff;color:white;">
+Chat
+</button>
+
+<!-- Chatbox -->
+<div id="chatbox" style="display:none;position:fixed;bottom:80px;right:20px;width:300px;background:white;border:1px solid #ccc;padding:10px;">
+  <div id="messages" style="height:200px;overflow-y:auto;"></div>
+  <input type="text" id="userInput" placeholder="Ask something..." style="width:70%;">
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+function openChat() {
+  var box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function sendMessage() {
+  var input = document.getElementById("userInput").value;
+  var messages = document.getElementById("messages");
+
+  messages.innerHTML += "<p><b>You:</b> " + input + "</p>";
+
+  let reply = "Sorry, I don't understand.";
+
+  if(input.toLowerCase().includes("medical")) {
+    reply = "Medical field me MBBS, BDS, Pharmacy options hote hain.";
+  }
+  if(input.toLowerCase().includes("engineering")) {
+    reply = "Engineering me CSE, Mechanical, Civil popular branches hain.";
+  }
+
+  messages.innerHTML += "<p><b>Bot:</b> " + reply + "</p>";
+}
+</script>
 </body>
 </html>
